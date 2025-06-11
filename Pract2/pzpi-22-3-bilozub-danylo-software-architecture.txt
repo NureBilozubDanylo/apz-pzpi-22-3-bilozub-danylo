@@ -1,0 +1,494 @@
+Харківський національний університет радіоелектроніки
+Факультет комп'ютерних наук
+Катедра програмної інженерії
+
+
+
+
+ЗВІТ
+з практичного заняття №2
+з дисципліни  «Архітектура програмного забезпечення»
+на тему: «Архітектура відомих програмних систем»
+
+
+
+
+Виконав
+ст. гр. ПЗПІ-22-3
+Білозуб Данило Владиславович
+
+Перевірив
+ст. викладач катедри ПІ
+Сокорчук Ігор Петрович
+
+
+
+
+Харків 2025
+
+
+
+
+ІСТОРІЯ ЗМІН
+ 
+№	Дата	Версія звіту	Опис змін та виправлень
+1	10.04.2025	0.1	Створено загальну структуру звіту
+2	10.04.2025	0.1	Створено пункти «Завдання»
+3	11.04.2025	0.1	Створено пункти «Опис виконаної роботи»
+4	12.04.2025	0.1	Заповнено додаток Б та В. Надано приклади коду.
+5	13.04.2025	0.1	Створено посилання на відео з доповіддю
+
+
+
+
+1 ЗАВДАННЯ
+
+Завданням на дане практичне завдання  можна вважати дослідження архітектури однієї з відомих складних програмних систем. Зокрема було обрано платформу Twitch, а отже слід дослідити саме її архітектуру.
+
+2 ОПИС ВИКОНАНОЇ РОБОТИ
+
+Підготовлено доповідь про архітектуру Visual Studio Code (VS Code), представлену у вигляді презентації з численними слайдами, прикладами коду та поясненнями. Слайди наведено в додатку Б, відео з розповіддю — у додатку А.
+Архітектура VS Code — модульна система, побудована на Electron, що забезпечує кросплатформність, швидкодію та розширюваність. Вона підтримує широкий спектр мов програмування, інтеграцію з інструментами розробки та екосистему розширень. Основні компоненти включають Client (UI), Extension Host, Language Server (через LSP), WebView і Editor Renderer (на базі Monaco Editor), які взаємодіють через JSON-RPC і асинхронні API.
+Доповідь висвітлює:
+•	Проблематику, яку вирішує VS Code: фрагментацію інструментів, продуктивність, розширюваність.
+•	Модульну архітектуру та взаємодію компонентів.
+•	Використання патернів дизайну (Observer, Command, Dependency Injection).
+•	Роботу Language Server Protocol з прикладами запитів.
+•	Реальні розширення (ESLint, GitLens) і створення власних.
+•	Тестування, дебагінг (через DAP), безпеку (ізоляція, CSP) і оптимізацію продуктивності.
+•	Інтеграцію з Git, Docker та іншими сервісами.
+•	Аналітику й телеметрію з можливістю відключення.
+Наведено приклади коду для:
+•	Реєстрації команд і автодоповнення.
+•	Створення діагностики помилок.
+•	Інтерактивних WebView-інтерфейсів.
+•	Налаштування задач і дебагінгу.
+Технологічна основа включає JavaScript/TypeScript, Electron і TextMate-граматики. Безпека забезпечується ізоляцією процесів і обмеженнями доступу.
+У висновках підкреслено, що VS Code — гнучка, продуктивна платформа, яка поєднує простоту з потужними можливостями, сприяючи інноваціям через розширення.
+
+ВИСНОВКИ
+
+У результаті виконання даної практичної роботи було розглянуто архітектуру VS Code
+
+
+
+
+ДОДАТОК А
+Посилання на відеозапис доповіді
+
+Відеозапис доповіді на YouTube: https://youtu.be/sZLErOYEylk
+
+
+
+
+ДОДАТОК Б
+Слайди презентації доповіді
+
+  
+Рисунок Б.1 – Титульний слайд
+
+  
+Рисунок Б.2 – Зміст доповіді
+
+ 
+Рисунок Б.3 – Вступ: Архітектура Visual Studio Code: Глибокий аналіз
+
+ 
+Рисунок Б.4 – Що таке Visual Studio Code
+
+ 
+Рисунок Б.5 – Проблематика, яку вирішує VS Code
+
+ 
+Рисунок Б.6 – Загальна архітектура системи
+
+ 
+Рисунок Б.7 – Компоненти VS Code — Extension Host
+
+ 
+Рисунок Б.8 – Приклад коду (розширення для аналізу файлу)
+
+ 
+Рисунок Б.9 – Компоненти VS Code — Language Server
+
+ 
+Рисунок Б.10 – Компоненти VS Code — WebView
+
+ 
+Рисунок Б.11 – Приклад з WebView
+
+ 
+Рисунок Б.12 – Компоненти VS Code — Editor Renderer
+
+ 
+Рисунок Б.13 – Взаємодія компонентів
+
+ 
+Рисунок Б.14 – Використання патернів
+
+ 
+Рисунок Б.15 – Language Server Protocol: як працює
+
+ 
+Рисунок Б.16 – Приклади реальних розширень для VS Code
+
+ 
+Рисунок Б.17 – Тестування і дебаг у VS Code
+
+
+ 
+Рисунок Б.18 – Безпека розширень
+
+
+ 
+Рисунок Б.19 – Продуктивність VS Code
+
+
+ 
+Рисунок Б.20 – Приклад кастомного розширення
+
+
+ 
+Рисунок Б.21 – Приклад кастомного розширення
+
+ 
+Рисунок Б.22 – Взаємодія з іншими сервісами
+
+ 
+Рисунок Б.23 – Висновки
+
+ 
+Рисунок Б.24 – Джерела
+
+
+
+
+ДОДАТОК В
+Приклади програмного коду
+
+Приклад коду (розширення для аналізу файлу)
+
+1 const vscode = require('vscode');
+2 // Створюємо колекцію для діагностики
+3 const diagnosticCollection = vscode.languages.createDiagnosticCollection('fileAnalyzer');
+4 function activate(context) {
+5     // Реєструємо команду
+6     let disposable = vscode.commands.registerCommand('extension.analyzeFile', async () => {
+7         const editor = vscode.window.activeTextEditor;
+8         if (!editor) {
+9             vscode.window.showErrorMessage('No active editor!');
+10             return;
+11         }
+12         const document = editor.document;
+13         const diagnostics = [];
+14         // Аналізуємо вміст файлу (приклад: пошук заборонених слів)
+15         const text = document.getText();
+16         const forbiddenWords = ['TODO', 'FIXME'];
+17         const lines = text.split('\n');
+18         lines.forEach((line, index) => {
+19             forbiddenWords.forEach(word => {
+20                 const wordIndex = line.indexOf(word);
+21                 if (wordIndex !== -1) {
+22                     const range = new vscode.Range(
+23                         index, wordIndex,
+24                         index, wordIndex + word.length
+25                     );
+26                     const diagnostic = new vscode.Diagnostic(
+27                         range,
+28                         `Found forbidden word: ${word}`,
+29                         vscode.DiagnosticSeverity.Warning
+30                     );
+31                     diagnostic.source = 'File Analyzer';
+32                     diagnostics.push(diagnostic);
+33                 }
+34             });
+35         });
+36         // Оновлюємо діагностику
+37         diagnosticCollection.clear();
+38         diagnosticCollection.set(document.uri, diagnostics);
+39         // Показуємо повідомлення про результат
+40         vscode.window.showInformationMessage(`Analysis complete. Found ${diagnostics.length} issues.`);
+41     });
+42     // Реєструємо обробник зміни активного файлу
+43     context.subscriptions.push(
+44         vscode.window.onDidChangeActiveTextEditor(() => {
+45             diagnosticCollection.clear();
+46         })
+47     );
+48     // Додаємо команду до контексту
+49     context.subscriptions.push(disposable);
+50 }
+51 function deactivate() {
+52     diagnosticCollection.clear();
+53 }
+54 module.exports = {
+55     activate,
+56     deactivate
+57 };
+
+Приклад з WebView
+
+1 const vscode = require('vscode');
+2 const fs = require('fs');
+3 const path = require('path');
+4 
+5 function activate(context) {
+6     // Реєструємо команду для відкриття WebView
+7     context.subscriptions.push(
+8         vscode.commands.registerCommand('extension.showInteractiveWebView', () => {
+9             // Створюємо WebView-панель
+10             const panel = vscode.window.createWebviewPanel(
+11                 'interactiveWebView',
+12                 'Interactive WebView',
+13                 vscode.ViewColumn.One,
+14                 {
+15                     enableScripts: true // Дозволяємо JavaScript
+16                 }
+17             );
+18 
+19             // Встановлюємо HTML-контент із вбудованими стилями та скриптами
+20             panel.webview.html = `
+21                 <!DOCTYPE html>
+22                 <html lang="en">
+23                 <head>
+24                     <meta charset="UTF-8">
+25                     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline';">
+26                     <title>Interactive WebView</title>
+27                 </head>
+28                 <body>
+29                     <h1>Text Analyzer</h1>
+30                     <textarea id="inputText" rows="5" cols="50" placeholder="Enter text to analyze..."></textarea>
+31                     <div>
+32                         <button onclick="analyzeText()">Analyze Text</button>
+33                         <button onclick="saveText()">Save to File</button>
+34                     </div>
+35                     <div id="result" style="margin-top: 20px;"></div>
+36 
+37                     <style>
+38                        
+39                     </style>
+40 
+41                     <script>
+42                         const vscode = acquireVsCodeApi();
+43 
+44                         function analyzeText() {
+45                             const text = document.getElementById('inputText').value;
+46                             vscode.postMessage({
+47                                 command: 'analyzeText',
+48                                 text: text
+49                             });
+50                         }
+51 
+52                         function saveText() {
+53                             const text = document.getElementById('inputText').value;
+54                             vscode.postMessage({
+55                                 command: 'saveText',
+56                                 text: text
+57                             });
+58                         }
+59 
+60                         window.addEventListener('message', event => {
+61                             const message = event.data;
+62                             const resultDiv = document.getElementById('result');
+63                             if (message.command === 'showResult') {
+64                                 resultDiv.style.display = 'block';
+65                                 resultDiv.innerHTML = '<strong>Result:</strong> ' + message.result;
+66                             }
+67                         });
+68                     </script>
+69                 </body>
+70                 </html>
+71             `;
+72 
+73             // Обробляємо повідомлення від WebView
+74             panel.webview.onDidReceiveMessage(
+75                 async (message) => {
+76                     switch (message.command) {
+77                         case 'analyzeText':
+78                             // Аналізуємо текст: підраховуємо слова
+79                             const wordCount = message.text.trim().split(/\s+/).filter(word => word.length > 0).length;
+80                             const result = `Analysis completed: ${wordCount} word(s) detected.`;
+81                             // Надсилаємо результат назад до WebView
+82                             panel.webview.postMessage({
+83                                 command: 'showResult',
+84                                 result: result
+85                             });
+86                             break;
+87                         case 'saveText':
+88                             // Зберігаємо текст у файл
+89                             const workspaceFolders = vscode.workspace.workspaceFolders;
+90                             if (workspaceFolders) {
+91                                 const filePath = path.join(workspaceFolders[0].uri.fsPath, 'webview_output.txt');
+92                                 try {
+93                                     fs.writeFileSync(filePath, message.text);
+94                                     vscode.window.showInformationMessage(`Text saved to ${filePath}`);
+95                                 } catch (err) {
+96                                     vscode.window.showErrorMessage(`Failed to save file: ${err.message}`);
+97                                 }
+98                             } else {
+99                                 vscode.window.showErrorMessage('No workspace open to save the file!');
+100                             }
+101                             break;
+102                     }
+103                 },
+104                 undefined,
+105                 context.subscriptions
+106             );
+107         })
+108     );
+109 }
+110 function deactivate() {}
+111 module.exports = {
+112     activate,
+113     deactivate
+114 };
+
+Приклад кастомного розширення
+
+1 const vscode = require('vscode');
+2 // Колекція для діагностики
+3 const diagnosticCollectionn = vscode.languages.createDiagnosticCollection('mylangAnalyzer');
+4 function activate(context) {
+5     // 1. Реєструємо провайдер автодоповнення для мови "mylang"
+6     const completionProvider = vscode.languages.registerCompletionItemProvider(
+7         'mylang',
+8         {
+9             provideCompletionItems(document, position) {
+10                 // Отримуємо слово перед курсором
+11                 const line = document.lineAt(position).text;
+12                 const wordRange = document.getWordRangeAtPosition(position);
+13                 const word = wordRange ? document.getText(wordRange) : '';
+14 
+15                 // Список пропозицій
+16                 const suggestions = [
+17                     {
+18                         label: 'function',
+19                         kind: vscode.CompletionItemKind.Keyword,
+20                         detail: 'Keyword to define a function',
+21                         documentation: 'Inserts a function declaration',
+22                         insertText: 'function '
+23                     },
+24                     {
+25                         label: 'print',
+26                         kind: vscode.CompletionItemKind.Function,
+27                         detail: 'Prints a message to the console',
+28                         insertText: 'print('
+29                     },
+30                     {
+31                         label: 'loop',
+32                         kind: vscode.CompletionItemKind.Keyword,
+33                         detail: 'Creates a loop structure',
+34                         insertText: 'loop {\n\t\n}',
+35                         range: wordRange
+36                     }
+37                 ];
+38                 // Фільтруємо пропозиції за введеним словом
+39                 return suggestions.map(item => {
+40                     const completionItem = new vscode.CompletionItem(item.label, item.kind);
+41                     completionItem.detail = item.detail;
+42                     completionItem.documentation = item.documentation || item.detail;
+43                     completionItem.insertText = item.insertText;
+44                     if (item.range) {
+45                         completionItem.range = item.range;
+46                     }
+47                     return completionItem;
+48                 });
+49             }
+50         },
+51         '' // Тригери для автодоповнення
+52     );
+53     // 2. Реєструємо команду для контекстного меню
+54     const uppercaseCommand = vscode.commands.registerCommand('mylang.convertToUppercase', () => {
+55         const editor = vscode.window.activeTextEditor;
+56         if (!editor) {
+57             vscode.window.showErrorMessage('No active editor!');
+58             return;
+59         }
+60         const selection = editor.selection;
+61         const selectedText = editor.document.getText(selection);
+62         if (!selectedText) {
+63             vscode.window.showWarningMessage('No text selected!');
+64             return;
+65         }
+66         // Перетворюємо виділений текст у верхній регістр
+67         editor.edit(editBuilder => {
+68             editBuilder.replace(selection, selectedText.toUpperCase());
+69         }).then(success => {
+70             if (success) {
+71                 vscode.window.showInformationMessage('Text converted to uppercase!');
+72             } else {
+73                 vscode.window.showErrorMessage('Failed to convert text.');
+74             }
+75         });
+76     });
+77     // 3. Аналіз документа для діагностики
+78     function analyzeDocument(document) {
+79         if (document.languageId !== 'mylang') {
+80             return;
+81         }
+82         const diagnostics = [];
+83         const text = document.getText();
+84         const lines = text.split('\n');
+85         // Приклад аналізу: шукаємо некоректне використання "function" без назви
+86         lines.forEach((line, index) => {
+87             const trimmedLine = line.trim();
+88             if (trimmedLine.startsWith('function') && !trimmedLine.match(/function\s+\w+/)) {
+89                 const range = new vscode.Range(
+90                     index, line.indexOf('function'),
+91                     index, line.indexOf('function') + 'function'.length
+92                 );
+93                 const diagnostic = new vscode.Diagnostic(
+94                     range,
+95                     'Function keyword must be followed by a name',
+96                     vscode.DiagnosticSeverity.Error
+97                 );
+98                 diagnostic.code = 'invalid-function';
+99                 diagnostics.push(diagnostic);
+100             }
+101             // Шукаємо "print" без аргументів
+102             if (trimmedLine.match(/print\s*\(\s*\)/)) {
+103                 const matchIndex = line.indexOf('print');
+104                 const range = new vscode.Range(
+105                     index, matchIndex,
+106                     index, matchIndex + 'print'.length
+107                 );
+108                 const diagnostic = new vscode.Diagnostic(
+109                     range,
+110                     'Print function requires at least one argument',
+111                     vscode.DiagnosticSeverity.Warning
+112                 );
+113                 diagnostic.code = 'empty-print';
+114                 diagnostics.push(diagnostic);
+115             }
+116         });
+117         // Оновлюємо діагностику
+118         diagnosticCollection.set(document.uri, diagnostics);
+119     }
+120     // 4. Реєструємо обробник зміни документа
+121     const changeDocumentSubscription = vscode.workspace.onDidChangeTextDocument(event => {
+122         analyzeDocument(event.document);
+123     });
+124     // 5. Аналізуємо відкритий документ
+125     const openDocumentSubscription = vscode.workspace.onDidOpenTextDocument(document => {
+126         analyzeDocument(document);
+127     });
+128     // Аналізуємо активний документ при запуску
+129     if (vscode.window.activeTextEditor) {
+130         analyzeDocument(vscode.window.activeTextEditor.document);
+131     }
+132     // Реєструємо всі ресурси
+133     context.subscriptions.push(
+134         completionProvider,
+135         uppercaseCommand,
+136         changeDocumentSubscription,
+137         openDocumentSubscription,
+138         diagnosticCollection
+139     );
+140 }
+141 function deactivate() {
+142     diagnosticCollection.clear();
+143 }
+144 module.exports = {
+145     activate,
+146     deactivate
+147 };

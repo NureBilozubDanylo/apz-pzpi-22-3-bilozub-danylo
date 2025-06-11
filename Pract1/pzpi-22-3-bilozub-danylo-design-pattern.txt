@@ -1,0 +1,452 @@
+Харківський національний університет радіоелектроніки
+Факультет комп'ютерних наук
+Катедра програмної інженерії
+
+
+
+
+
+
+ЗВІТ
+з практичного заняття №1
+з дисципліни  «Архітектура програмного забезпечення»
+на тему: «Патерни проєктування»
+
+
+
+
+
+
+Виконав
+ст. гр. ПЗПІ-22-3
+Білозуб Данило Владиславович
+
+Перевірив
+ст. викладач катедри ПІ
+Сокорчук Ігор Петрович
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Харків 2025
+
+
+
+ІСТОРІЯ ЗМІН
+ 
+№	Дата	Версія звіту	Опис змін та виправлень
+1	19.03.2025	0.1	Створено загальну структуру звіту
+2	19.03.2025	0.1	Створено пункти «Завдання»
+3	20.03.2025	0.1	Створено пункти «Опис виконаної роботи»
+4	22.03.2025	0.1	Заповнено додаток Б та В. Надано приклади коду.
+5	22.03.2025	0.1	Створено посилання на відео з доповіддю
+
+
+
+
+
+1 ЗАВДАННЯ
+
+Дослідити програмний патерн Сростерігач, його призначення, структуру, особливості реалізації та практичне застосування в об'єктноорієнтованому програмуванні. Продемонструвати принципи роботи патерну на конкретних прикладах програмного коду для унаочнення його застосування в розробці програмного забезпечення.
+
+2 ОПИС ВИКОНАНОЇ РОБОТИ
+
+Було сформовано доповідь. Її розказано у вигляді відео, посилання на яке розміщено в додатку А. Слайди презентації наведено в додатку Б. Код який аналізували як приклади наведено в додатку В.
+Ця доповідь занурює нас у світ патерну "Спостерігач" — потужного інструменту з арсеналу поведінкових патернів проєктування, який вирішує проблеми динамічної взаємодії між компонентами програмного забезпечення. Ми досліджуємо, як сучасні системи стикаються з викликами реального часу, необхідністю синхронізації та слабкого зв’язку між модулями. "Спостерігач" постає як рішення, що дозволяє одним об’єктам автоматично реагувати на зміни в інших, не створюючи жорстких залежностей.
+У доповіді розкриваються принципи роботи патерну, його архітектура та сфери застосування — від інтерфейсів користувача до розподілених систем. Ми розглянемо 4 практичні приклади реалізації "Спостерігача" на JavaScript. Кожен приклад супроводжується повноцінним кодом і поясненням ідеї, яку він демонструє: від масштабованості до реактивності. Презентація також аналізує переваги й недоліки патерну, порівнює його з іншими шаблонами та наводить реальні приклади використання в технологіях, таких як RxJS чи Redux.
+Опис патерну "Спостерігач"
+Патерн "Спостерігач" — це поведінковий шаблон проєктування, який нагадує систему підписки: один об’єкт (суб’єкт) повідомляє інших (спостерігачів) про свої зміни, дозволяючи їм реагувати в реальному часі. Уявіть собі радіостанцію, яка транслює новини, а слухачі з увімкненими приймачами отримують оновлення без необхідності постійно запитувати стан. Так само "Спостерігач" забезпечує зв’язок "один до багатьох", де суб’єкт надсилає сповіщення, а спостерігачі обробляють їх на свій розсуд.
+Цей патерн вирізняється своєю здатністю знижувати залежність між компонентами, зберігаючи при цьому їхню синхронізацію. Він дозволяє легко додавати чи видаляти спостерігачів, роблячи систему гнучкою та відкритою до розширень. "Спостерігач" ідеально підходить для ситуацій, де потрібні оновлення в реальному часі — наприклад, у чатах, UI-фреймворках чи системах моніторингу. У сучасних технологіях, таких як React чи Vue, він лежить в основі реактивності, а в RxJS стає основою для роботи з потоками даних.
+Однак "Спостерігач" має свої межі: велика кількість спостерігачів може уповільнити систему, а невдале управління підписками — призвести до витоків пам’яті. Його сила в динамічності й модульності, але успіх залежить від правильного балансу в дизайні. "Спостерігач" — це ключ до створення систем, які "живуть" і реагують на зміни без зайвих ускладнень.
+
+ВИСНОВКИ
+
+У результаті виконання даної практичної роботи було розглянуто шаблон Спостерігач. З’ясовано його переваги та недоліки. Описано доцільність його використання.
+
+
+
+
+
+ДОДАТОК А
+Посилання на відеозапис доповіді
+
+Відеозапис доповіді на YouTube: https://youtu.be/MIKA6-0jqOE
+
+
+
+
+
+ДОДАТОК Б
+Слайди презентації доповіді
+
+  
+Рисунок Б.1 – Титульний слайд
+
+  
+Рисунок Б.2 – Зміст доповіді
+
+ 
+Рисунок Б.3 – Вступ: Що таке патерн проєктування?
+
+ 
+Рисунок Б.4 – Проблематика розробки сучасного ПЗ
+
+ 
+Рисунок Б.5 – Що таке патерн "Спостерігач"?
+
+ 
+Рисунок Б.6 – Де використовується патерн "Спостерігач"?
+
+ 
+Рисунок Б.7 – Архітектура та принцип роботи патерна "Спостерігач"
+
+ 
+Рисунок Б.8 – Класична реалізація патерна (теоретичний код)
+
+ 
+Рисунок Б.9 – Переваги методу "Спостерігач"
+
+ 
+Рисунок Б.10 – Недоліки методу "Спостерігач"
+
+ 
+Рисунок Б.11 – Приклад 1: Оновлення списку нотаток із Vue.js та Vuex
+
+ 
+Рисунок Б.12 – Приклад 2: Реактивне відображення наявності товарів у Vue.js
+
+ 
+Рисунок Б.13 – Приклад 3: Відстеження статусу замовлення
+
+ 
+Рисунок Б.14 – Приклад 4: Динамічне оновлення лічильника в React
+
+ 
+Рисунок Б.15 – Реальні приклади використання патерна в популярних технологіях
+
+ 
+Рисунок Б.16 – Висновки
+
+ 
+Рисунок Б.17 – Джерела
+
+
+
+
+
+ДОДАТОК В
+Приклади програмного коду
+
+Оновлення списку нотаток із Vue.js та Vuex
+
+1 // store.js
+2 import Vuex from 'vuex';
+3 import Vue from 'vue';
+4 
+5 Vue.use(Vuex);
+6 
+7 // Стан і логіка (суб’єкт)
+8 const store = new Vuex.Store({
+9     state: {
+10         notes: [
+11             { id: 1, text: "Купити молоко", done: false },
+12             { id: 2, text: "Подзвонити другу", done: false }
+13         ]
+14     },
+15     mutations: {
+16         toggleNote(state, noteId) {
+17             const note = state.notes.find(n => n.id === noteId);
+18             if (note) {
+19                 note.done = !note.done;
+20             }
+21         }
+22     },
+23     actions: {
+24         toggleNote({ commit }, noteId) {
+25             commit('toggleNote', noteId);
+26         }
+27     },
+28     getters: {
+29         allNotes: state => state.notes
+30     }
+31 });
+32 
+33 export default store;
+34 
+35 // Notes.vue
+36 <template>
+37   <div>
+38     <h1>Список нотаток</h1>
+39     <ul>
+40       <li v-for="note in notes" :key="note.id">
+41         <input
+42           type="checkbox"
+43           :checked="note.done"
+44           @change="toggleNote(note.id)"
+45         />
+46         <span :style="{ textDecoration: note.done ? 'line-through' : 'none' }">
+47           {{ note.text }}
+48         </span>
+49       </li>
+50     </ul>
+51   </div>
+52 </template>
+53 
+54 <script>
+55 import { mapGetters, mapActions } from 'vuex';
+56 
+57 export default {
+58     name: 'Notes',
+59     computed: {
+60         // Спостерігач: підписка на стан через геттер
+61         ...mapGetters(['allNotes']),
+62         notes() {
+63             return this.allNotes;
+64         }
+65     },
+66     methods: {
+67         // Виклик дії для оновлення стану
+68         ...mapActions(['toggleNote'])
+69     },
+70     updated() {
+71         console.log('Компонент Notes оновився');
+72     }
+73 };
+74 </script>
+75 
+76 // main.js
+77 import Vue from 'vue';
+78 import App from './App.vue';
+79 import store from './store';
+80 
+81 Vue.config.productionTip = false;
+82 
+83 new Vue({
+84     store,
+85     render: h => h(App)
+86 }).$mount('#app');
+87 
+88 // App.vue
+89 <template>
+90   <div id="app">
+91     <Notes />
+92   </div>
+93 </template>
+94 
+95 <script>
+96 import Notes from './components/Notes.vue';
+97 
+98 export default {
+99     name: 'App',
+100     components: {
+101         Notes
+102     }
+103 };
+104 </script>
+
+Відстеження статусу замовлення
+
+1 // orderSubject.js
+2 class OrderSubject {
+3     constructor() {
+4         this.observers = [];
+5         this.orders = {};
+6     }
+7 
+8     addObserver(observer) {
+9         this.observers.push(observer);
+10     }
+11 
+12     removeObserver(observer) {
+13         this.observers = this.observers.filter(obs => obs !== observer);
+14     }
+15 
+16     notify(data) {
+17         this.observers.forEach(observer => observer.update(data));
+18     }
+19 
+20     updateOrderStatus(orderId, status) {
+21         this.orders[orderId] = status;
+22         this.notify({ orderId, status });
+23     }
+24 }
+25 
+26 // observers.js
+27 class CustomerOrderObserver {
+28     constructor(customerName) {
+29         this.customerName = customerName;
+30     }
+31 
+32     update(data) {
+33         console.log(`${this.customerName}: Статус замовлення ${data.orderId} змінено на "${data.status}"`);
+34     }
+35 }
+36 
+37 class LogisticsObserver {
+38     update(data) {
+39         console.log(`Логістика: Оновлено статус замовлення ${data.orderId} - ${data.status}`);
+40     }
+41 }
+42 
+43 // main.js
+44 const orderSubject = new OrderSubject();
+45 
+46 const customer = new CustomerOrderObserver("Андрій");
+47 const logistics = new LogisticsObserver();
+48 
+49 orderSubject.addObserver(customer);
+50 orderSubject.addObserver(logistics);
+51 
+52 orderSubject.updateOrderStatus("order001", "Відправлено");
+
+Реактивне відображення наявності товарів у Vue.js
+
+1 //store.js
+2 import { reactive } from 'vue';
+3 
+4 // Суб’єкт — об’єкт стану зоомагазину
+5 const petStore = reactive({
+6     products: [
+7         { id: "cat123", name: "Кіт Мурзик", inStock: 5 },
+8         { id: "dog456", name: "Собака Рекс", inStock: 3 }
+9     ],
+10     observers: [], // Спостерігачі для зовнішньої логіки (необов’язково у Vue, але для прикладу)
+11 
+12     addObserver(observer) {
+13         this.observers.push(observer);
+14     },
+15 
+16     removeObserver(observer) {
+17         this.observers = this.observers.filter(obs => obs !== observer);
+18     },
+19 
+20     notify(data) {
+21         this.observers.forEach(observer => observer.update(data));
+22     },
+23 
+24     updateStock(productId, newStock) {
+25         const product = this.products.find(p => p.id === productId);
+26         if (product) {
+27             product.inStock = newStock;
+28             this.notify({ productId, newStock }); // Додаткове сповіщення для не-Vue спостерігачів
+29         }
+30     }
+31 });
+32 
+33 export default petStore;
+34 
+35 // observers.js
+36 export class WarehouseObserver {
+37     update(data) {
+38         console.log(`Склад: Оновлено наявність товару ${data.productId} - ${data.newStock} одиниць`);
+39     }
+40 }
+41 
+42 // App.vue
+43 <template>
+44   <div>
+45     <h1>Наявність товарів у зоомагазині</h1>
+46     <ul>
+47       <li v-for="product in petStore.products" :key="product.id">
+48         {{ product.name }} - Наявність: {{ product.inStock }}
+49       </li>
+50     </ul>
+51     <button @click="updateStock('cat123', 4)">Оновити наявність Мурзика</button>
+52   </div>
+53 </template>
+54 
+55 <script>
+56 import petStore from './store';
+57 import { WarehouseObserver } from './observers';
+58 
+59 export default {
+60   name: 'App',
+61   setup() {
+62     const warehouse = new WarehouseObserver();
+63     petStore.addObserver(warehouse);
+64 
+65     const updateStock = (productId, newStock) => {
+66       petStore.updateStock(productId, newStock);
+67     };
+68 
+69     return {
+70       petStore,
+71       updateStock
+72     };
+73   }
+74 };
+75 </script>
+76 
+77 // main.js
+78 import { createApp } from 'vue';
+79 import App from './App.vue';
+80 
+81 const app = createApp(App);
+82 app.mount('#app');
+
+Динамічне оновлення лічильника в React
+
+1 // Counter.js
+2 import React, { useState } from 'react';
+3 
+4 // Компонент "спостерігач" за одним лічильником
+5 const CounterDisplay = ({ count, name }) => {
+6     console.log(`${name} відрендерився`);
+7     return <p>{name}: {count}</p>;
+8 };
+9 
+10 // Головний компонент із суб’єктом (станом)
+11 const CounterApp = () => {
+12     const [counterA, setCounterA] = useState(0);
+13     const [counterB, setCounterB] = useState(0);
+14 
+15     const incrementA = () => setCounterA(counterA + 1);
+16     const incrementB = () => setCounterB(counterB + 1);
+17 
+18     return (
+19         <div>
+20             <h1>Динамічні лічильники</h1>
+21             <CounterDisplay count={counterA} name="Лічильник A" />
+22             <CounterDisplay count={counterB} name="Лічильник B" />
+23             <button onClick={incrementA}>Збільшити A</button>
+24             <button onClick={incrementB}>Збільшити B</button>
+25         </div>
+26     );
+27 };
+28 
+29 export default CounterApp;
+30 
+31 // App.js
+32 import React from 'react';
+33 import CounterApp from './Counter';
+34 
+35 const App = () => {
+36     return (
+37         <div>
+38             <CounterApp />
+39         </div>
+40     );
+41 };
+42 
+43 export default App;
+44 
+45 // index.js
+46 import React from 'react';
+47 import ReactDOM from 'react-dom';
+48 import App from './App';
+49 
+50 ReactDOM.render(<App />, document.getElementById('root'));
