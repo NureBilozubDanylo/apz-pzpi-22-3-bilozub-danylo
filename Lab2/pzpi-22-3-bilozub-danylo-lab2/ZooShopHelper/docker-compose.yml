@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: ZooShopHelper
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Danya1234
+    ports:
+      - "5433:5432"
+    networks:
+      - zooshop_network
+      
+  api:
+    build:
+      context: .
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql+psycopg2://postgres:Danya1234@db:5432/ZooShopHelper
+    volumes:
+      - ./app:/api/app
+    ports:
+      - "8080:8000"
+    networks:
+      - zooshop_network
+
+networks:
+  zooshop_network:
+    driver: bridge
