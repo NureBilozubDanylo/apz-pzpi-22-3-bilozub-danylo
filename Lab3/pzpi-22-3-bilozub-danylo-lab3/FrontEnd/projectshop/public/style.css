@@ -1,0 +1,151 @@
+* {
+    font-family: "Faculty Glyphic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+input:focus{
+    outline: none;
+}
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.wrapper{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+a {
+    text-decoration: none !important;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  #app {
+    height: 100%;
+  }
+
+body {
+    margin: 0;
+}
+.search-pannel, .category-block{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+.categories{
+  display: flex;
+  gap: 5px;
+}
+.category-history{
+  font-size: 15px;
+  cursor: pointer;
+}
+.category-history:hover{
+  color: #c7a229;
+}
+.category-history{
+  display: inline;
+}
+.category-dropdown{
+  margin-bottom: 5px;
+}
+.shop-head{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.shop-name{
+  padding-top: 20px;
+}
+.products-wrapper{
+  padding: 30px;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+.products-h{
+  margin-bottom: 30px;
+}
+.btnCreate{
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.btn {
+  cursor: pointer !important; 
+  padding: 10px 20px !important;
+  border-radius: 20px !important;
+  border: none !important;
+  color: #e2e2e2 !important;
+  background-color: black;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease !important;
+}
+
+.btn:hover {
+  background-color: #c7a229; /* Change to a vibrant blue */
+  color: white !important; /* Make text white for contrast */
+  transform: scale(1.05) !important; /* Slightly enlarge the button */
+}
+
+.btn1 {
+  cursor: pointer !important; 
+  padding: 10px 20px !important;
+  border-radius: 20px !important;
+  border: none !important;
+  color: #e2e2e2 !important;
+  background-color: black !important;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease !important;
+}
+
+.btn1:hover {
+  background-color: #c7a229 !important; /* Change to a vibrant blue */
+  color: white !important; /* Make text white for contrast */
+  transform: scale(1.05) !important; /* Slightly enlarge the button */
+}
+
+.confirm-btns{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.work-info{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex-direction: column;
+  gap: 15px;
+}
+.products-wrapper{
+  min-height: 45vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.receipt-itema{
+  display: flex;
+  flex-direction: column;
+  width: 100% !important;
+}
+.receipt-totala{
+  text-align: center !important;
+}

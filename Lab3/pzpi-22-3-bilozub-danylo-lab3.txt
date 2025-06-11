@@ -1,0 +1,675 @@
+
+Харківський національний університет радіоелектроніки
+Факультет комп'ютерних наук
+Кафедра програмної інженерії
+
+
+
+
+ЗВІТ
+з лабораторної роботи №3
+з дисципліни «Архітектура програмного забезпечення»
+на тему: «РОЗРОБКА ВЕБКЛІЄНТА СИСТЕМИ»
+
+
+
+
+Виконав 
+ст. гр. ПЗПІ-22-3 
+Білозуб Данило Владиславович
+
+Перевірив 
+ст. викладач кафедри ПІ 
+Сокорчук Ігор Петрович
+
+
+
+
+
+ 
+Харків 2025
+1 ІСТОРІЯ ЗМІН
+
+№ 	Дата	Версія звіту 	Опис змін та виправлень 
+1 	25.05.2025	0.1 	Створено розділ «Історія змін» 
+2 	25.05.2025	0.1 	Створено розділ «Завдання», Опис виконаної роботи» та «Висновки» 
+3 	27.05.2025	0.1 	Заповнено додаток Б з графічними матеріалами 
+4 	28.05.2025	0.1 	Заповнено додаток В з програмним кодом 
+5 	30.05.2025	0.1 	Наведено посилання на відеозапис. Заповнено додаток А. 
+
+2 ЗАВДАННЯ
+
+Метою даного лабораторного заняття є розробка клієнтської / front-end частини програмної системи.
+
+3 ОПИС ВИКОНАНОЇ РОБОТИ
+
+У межах виконання лабораторної роботи було реалізовано повноцінну систему для моніторингу зоомагазинів. Розробку здійснено з використанням стеку Vue.js (фронтенд) та FastAPI (бекенд). Створено повнофункціональний вебзастосунок з можливістю керування магазинами, працівниками, тваринами, сенсорами та кліматичними параметрами.
+Початковим етапом була реалізація основної структури проєкту: сторінка авторизації, інтерфейс магазину, особистий кабінет, панель адміністратора. В рамках цього було створено багато взаємозалежних компонентів: Sensors.vue, Animals.vue, AdminPanel.vue та інші.
+Особливу увагу було приділено реалізації бізнес-логіки:
+•	Додавання та виведення тварин із кліматичними параметрами.
+•	Підключення сенсорів, які надсилають автоматичні показники кожні 5 секунд.
+•	Зіставлення даних сенсорів із цільовими кліматичними параметрами магазину.
+•	Відправлення повідомлень та попереджень користувачам у разі відхилень.
+•	Автоматичне збереження кліматичної історії, доступної у вигляді графіка та таблиці.
+На панелі адміністратора реалізовано:
+•	Перегляд магазинів, призначених директору.
+•	Динамічне редагування даних працівників (роль, ім’я, email тощо).
+•	Адміністрування бізнес-логіки, включаючи серверну статистику (аптайм, використання ресурсів) та можливість створення резервних копій даних одним кліком.
+У реалізації також передбачено:
+•	Механізм авторизації через JWT-токен.
+•	Реактивне оновлення інтерфейсу з періодичними запитами до API.
+•	Адаптивний інтерфейс, який зручно використовувати як на десктопі, так і на мобільних пристроях.
+Клієнтську частину створено з урахуванням зручності використання та доступності для різних ролей користувачів.
+Приклади коду клієнтської та серверної частини наведені у додатку В, відеодемонстрацію роботи системи — у додатку А, графічні ілюстрації — у додатку Б.
+
+
+ВИСНОВКИ
+
+У результаті виконаної лабораторної роботи було реалізовано масштабований та інтерактивний вебзастосунок для моніторингу зоомагазинів. Забезпечено повноцінний обіг кліматичних даних, керування тваринами та персоналом, реалізовано панель адміністратора із функціоналом резервного копіювання та моніторингу сервера. Система має логічно побудовану архітектуру, зручний інтерфейс та високий рівень взаємодії з API, що дозволяє ефективно управляти внутрішніми процесами магазину.
+
+
+
+
+ДОДАТОК А
+Відеозапис
+
+Відеозапис презентації результатів лабораторної роботи: https://youtu.be/CUAKC4nUYUo
+
+Хронологічний опис відеозапису:
+00:00 Вітання. 
+00:20 Загальний функціонал. Робота з товарами та продажами 
+03:55 Функції бізнес логіки. Робота з сенсорами 
+08:10 Функції адміністратора баз даних. 
+09:05 Функції платформного адміністратора. 
+10:20 Функції системного адміністратора.
+
+
+
+
+ДОДАТОК Б 
+Графічні матеріали
+
+ 
+Рисунок Б.1 – ER-діаграма даних
+
+ 
+Рисунок Б.2 – Структура бази даних
+
+ 
+Рисунок Б.3 – UML-діаграма прецедентів
+
+ 
+Рисунок Б.4 – UML-діаграма прецедентів (Частина 2)
+
+ 
+Рисунок Б.5 – UML-діаграма прецедентів (Частина 3)
+
+ 
+Рисунок Б.6 – UML-діаграма прецедентів (Частина 4)
+
+ 
+Рисунок Б.7 – Uml діаграма взаємодії (послідовності) для створення нового користувача та його вхід в систему
+
+ДОДАТОК В 
+Програмний код
+
+В.1 Математична обробка прикладних даних.
+
+GitHub репозиторій: https://github.com/NureBilozubDanylo/apz-pzpi-22-3-bilozub-danylo/blob/main/Lab3/pzpi-22-3-bilozub-danylo-lab3/ZooShopHelper/app/crud/animal.py
+
+1 def update_climate_settings(db: Session, shop_id: int):
+2     animals = db.query(Animal).filter(Animal.shop_id == shop_id).all()
+3     if animals:
+4         temperatures = [float(a.temperature) for a in animals]
+5         humidities = [float(a.humidity) for a in animals]
+6         light_intensities = [float(a.light_intensity) for a in animals]
+7         weights = [a.weight for a in animals]
+8 
+9         # Temperature: Weighted median
+10         # Calculate the weighted average temperature
+11         total_weight = sum(a.weight for a in animals)
+12         if total_weight == 0:
+13             weighted_median_temperature = 0  # Handle the case with no weight
+14         else:
+15             weighted_median_temperature = sum(a.temperature * a.weight for a in animals) / total_weight
+16 
+17 
+18 
+19         # Optimal humidity
+20         humidities = [float(a.humidity) for a in animals]
+21         high_humidity_animals = [a for a in animals if a.humidity > 75]
+22 
+23         if high_humidity_animals:
+24             high_humidity_values = [float(a.humidity) for a in high_humidity_animals]
+25             optimal_humidity = np.percentile(high_humidity_values, 75)
+26         else:
+27             lower_percentile = np.percentile(humidities, 25)
+28             upper_percentile = np.percentile(humidities, 75)
+29             optimal_humidity = (lower_percentile + upper_percentile) / 2
+30 
+31         # Optimal light intensity
+32         light_intensities = [float(a.light_intensity) for a in animals]
+33         max_light_intensity = max(light_intensities)
+34         median_light_intensity = np.median(light_intensities)
+35         optimal_light_intensity = min(max_light_intensity, median_light_intensity)
+36 
+37 
+38         db_climate_settings = db.query(ClimateSettings).filter(ClimateSettings.shop_id == shop_id).first()
+39         if db_climate_settings:
+40             db_climate_settings.temperature = weighted_median_temperature
+41             db_climate_settings.humidity = optimal_humidity
+42             db_climate_settings.light_intensity = optimal_light_intensity
+43             db_climate_settings.updated_at = datetime.now()
+44         else:
+45             new_climate_settings = ClimateSettingsCreate(
+46                 temperature=weighted_median_temperature,
+47                 humidity=optimal_humidity,
+48                 light_intensity=optimal_light_intensity,
+49                 updated_at=datetime.now(),
+50                 shop_id=shop_id
+51             )
+52             db_climate_settings = ClimateSettings(**new_climate_settings.dict())
+53             db.add(db_climate_settings)
+54         
+55         db.commit()
+56         db.refresh(db_climate_settings)
+
+В.2 Адміністрування бізнес-логіки системи. Платформний адміністратор.
+
+GitHub репозиторій: https://github.com/NureBilozubDanylo/apz-pzpi-22-3-bilozub-danylo/blob/main/Lab3/pzpi-22-3-bilozub-danylo-lab3/ZooShopHelper/app/routers/admin_management.py
+
+1 """
+2 Адміністративні інструменти:
+3   • System Admin   – конфіги, стани, логи
+4   • Platform Admin – керування користувачами / компаніями
+5   • DB Admin       – резервні копії, оптимізація БД
+6 """
+7 
+8 import os, time, json, shutil, subprocess
+9 from datetime import datetime
+10 from pathlib import Path
+11 from typing import Dict, List, Optional
+12 
+13 import psutil
+14 import psycopg2
+15 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
+16 from sqlalchemy import text
+17 from sqlalchemy.orm import Session
+18 
+19 from app.database import SessionLocal, engine
+20 from app.dependencies import get_current_admin_user
+21 from app.crud import user as crud_user
+22 from app.schemas.user import UserUpdate
+23 from app.backup import backup_database
+24 from app.dependencies import get_current_admin_user
+25 from app.models.user import User
+26 
+27 router = APIRouter(prefix="/admin", tags=["Admin"])
+28 
+29 SYSTEM_CONFIG: Dict[str, str | int | bool] = {
+30     "maintenance_mode": False,
+31     "default_locale": "en",
+32     "max_file_size_mb": 50,
+33 }
+34 START_TIME = time.time()
+35 
+36 LOG_PATH = Path("server.log")
+37 START_TS = time.time()
+38 
+39 def get_db():
+40     db = SessionLocal()
+41     try:
+42         yield db
+43     finally:
+44         db.close()
+45 
+46 def as_admin(user=Depends(get_current_admin_user)):
+47     return user
+48 
+49 @router.post("/backup")
+50 def manual_backup(current: User = Depends(get_current_admin_user)):
+51     """Ручне резервне копіювання."""
+52     try:
+53         backup_database()        # існуюча функція
+54         return {"status": "ok", "timestamp": datetime.utcnow()}
+55     except Exception as e:
+56         raise HTTPException(status_code=500, detail=str(e))
+57 
+58 
+59 @router.get("/stats")
+60 def server_stats(current: User = Depends(get_current_admin_user)):
+61     """Повертає аптайм, CPU %, RAM та диск."""
+62     uptime = time.time() - START_TIME
+63     mem = psutil.virtual_memory()
+64     disk = psutil.disk_usage("/")
+65     return {
+66         "uptime_sec": int(uptime),
+67         "cpu_percent": psutil.cpu_percent(interval=0.2),
+68         "ram_used_mb": int(mem.used / 1024 / 1024),
+69         "ram_total_mb": int(mem.total / 1024 / 1024),
+70         "disk_used_gb": round(disk.used / 1024**3, 1),
+71         "disk_total_gb": round(disk.total / 1024**3, 1),
+72     }
+73 
+74 
+75 @router.get("/system/status")
+76 def system_status(_: str = Depends(as_admin)):
+77     """CPU, RAM, диск та аптайм."""
+78     uptime = int(time.time() - START_TS)
+79     mem = psutil.virtual_memory()
+80     disk = psutil.disk_usage("/")
+81     return {
+82         "uptime_sec": uptime,
+83         "cpu_percent": psutil.cpu_percent(interval=0.2),
+84         "ram_used_mb": int(mem.used / 1024 / 1024),
+85         "ram_total_mb": int(mem.total / 1024 / 1024),
+86         "disk_used_gb": round(disk.used / 1024**3, 1),
+87         "disk_total_gb": round(disk.total / 1024**3, 1),
+88         "config": SYSTEM_CONFIG,
+89     }
+90 
+91 @router.get("/system/config")
+92 def get_config(_: str = Depends(as_admin)):
+93     return SYSTEM_CONFIG
+94 
+95 @router.put("/system/config")
+96 def update_config(changes: Dict[str, str | int | bool], _: str = Depends(as_admin)):
+97     SYSTEM_CONFIG.update(changes)
+98     return {"status": "updated", "config": SYSTEM_CONFIG}
+99 
+100 @router.get("/system/logs")
+101 def get_logs(lines: int = 200, _: str = Depends(as_admin)):
+102     """Повернути останні N рядків лог-файлу."""
+103     if not LOG_PATH.exists():
+104         raise HTTPException(404, "log file not found")
+105     with LOG_PATH.open("r", encoding="utf-8", errors="ignore") as f:
+106         data = f.readlines()[-lines:]
+107     return {"log": "".join(data)}
+108 
+109 @router.delete("/system/logs")
+110 def clear_logs(_: str = Depends(as_admin)):
+111     if LOG_PATH.exists():
+112         LOG_PATH.write_text("")
+113     return {"status": "cleared"}
+114 
+115 
+116 
+117 BACKUP_DIR = Path("db_backups")
+118 BACKUP_DIR.mkdir(exist_ok=True)
+119 
+120 @router.post("/db/backup")
+121 def create_backup(_: str = Depends(as_admin)):
+122     ts = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+123     backup_database()
+124     return {"status": "backup_created", "timestamp": ts}
+125 
+126 @router.post("/db/restore")
+127 def restore_backup(file: UploadFile = File(...),
+128                    _: str = Depends(as_admin)):
+129     """Приймає *.sql.gz або *.dump та відновлює БД."""
+130     dst = BACKUP_DIR / file.filename
+131     with dst.open("wb") as f:
+132         shutil.copyfileobj(file.file, f)
+133 
+134     cmd = f'psql "{os.getenv("DATABASE_URL")}" -f "{dst}"'
+135     subprocess.run(cmd, shell=True, check=True)
+136     return {"status": "restored", "file": file.filename}
+137 
+138 @router.get("/admin/db/status")
+139 def db_status(_: str = Depends(as_admin)):
+140     with engine.connect() as conn:
+141         results = conn.execute(text("""
+142             SELECT
+143                 table_name,
+144                 pg_total_relation_size(quote_ident(table_name)) AS size
+145             FROM information_schema.tables
+146             WHERE table_schema = 'public'
+147         """)).fetchall()
+148 
+149     total = sum(row.size for row in results)
+150     return {
+151         "tables": [{ "name": row.table_name, "size_bytes": row.size } for row in results],
+152         "total_size_mb": round(total / 1024 / 1024, 2),
+153     }
+154 
+155 @router.post("/admin/db/optimize")
+156 def optimize_db(_: str = Depends(as_admin)):
+157     conn = engine.raw_connection()
+158     try:
+159         conn.set_session(autocommit=True)
+160         cur = conn.cursor()
+161         cur.execute("VACUUM")
+162         cur.close()
+163     finally:
+164         conn.close()
+165     return {"status": "vacuum_ok"}
+
+В.3 Адміністрування бізнес-логіки системи. Системний адміністратор.
+
+GitHub репозиторій: https://github.com/NureBilozubDanylo/apz-pzpi-22-3-bilozub-danylo/blob/main/Lab3/pzpi-22-3-bilozub-danylo-lab3/ZooShopHelper/app/routers/admin_tools.py
+
+1 from fastapi import APIRouter, Depends, HTTPException
+2 from datetime import datetime, timedelta
+3 from pathlib import Path
+4 import psutil, os, shutil, time
+5 import os, time, json, shutil, subprocess
+6 from datetime import datetime
+7 from pathlib import Path
+8 from typing import Dict, List, Optional
+9 
+10 import psutil
+11 import psycopg2
+12 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
+13 from sqlalchemy import text
+14 from sqlalchemy.orm import Session
+15 
+16 from app.database import SessionLocal, engine
+17 from app.dependencies import get_current_admin_user
+18 from app.crud import user as crud_user
+19 from app.schemas.user import UserUpdate
+20 from app.backup import backup_database
+21 from app.dependencies import get_current_admin_user
+22 from app.models.user import User
+23 from app.dependencies import get_current_admin_user
+24 from app.models.user import User
+25 from app.backup import backup_database    # функція вже існує
+26 
+27 router = APIRouter(prefix="/admin", tags=["Admin"])
+28 
+29 # для аптайму
+30 START_TIME = time.time()
+31 
+32 def get_db():
+33     db = SessionLocal()
+34     try:
+35         yield db
+36     finally:
+37         db.close()
+38 
+39 def as_admin(user=Depends(get_current_admin_user)):
+40     return user
+41 
+42 @router.put("/platform/users/{user_id}/role")
+43 def set_user_role(user_id: int, new_role: str = Form(...),
+44                   db: Session = Depends(get_db),
+45                   _: str = Depends(as_admin)):
+46     if new_role not in {"worker", "director", "admin"}:
+47         raise HTTPException(400, "invalid role")
+48     crud_user.update_user(db, user_id, UserUpdate(role=new_role))
+49     return {"status": "ok", "user_id": user_id, "role": new_role}
+50 
+51 @router.post("/platform/users/{user_id}/logout")
+52 def force_logout(user_id: int, db: Session = Depends(get_db), _: str = Depends(as_admin)):
+53     user = crud_user.get_user(db, user_id)
+54     if not user:
+55         raise HTTPException(404, "User not found")
+56     user.token = None  # або як у тебе реалізовані сесії
+57     db.commit()
+58     return {"status": "force_logged_out", "user_id": user_id}
+59 
+60 @router.delete("/platform/users/{user_id}")
+61 def delete_user(user_id: int, db: Session = Depends(get_db), _: str = Depends(as_admin)):
+62     user = crud_user.get_user(db, user_id)
+63     if not user:
+64         raise HTTPException(404, "User not found")
+65 
+66     db.execute(text("DELETE FROM \"Employees\" WHERE user_id = :uid"), {"uid": user_id})
+67     db.commit()
+68 
+69     db.delete(user)
+70     db.commit()
+71 
+72     return {"status": "deleted", "user_id": user_id}
+73 
+74 @router.patch("/platform/users/{user_id}/role")
+75 def change_user_role(
+76     user_id: int,
+77     new_role: str = Form(...),
+78     db: Session = Depends(get_db),
+79     _: str = Depends(as_admin)
+80 ):
+81     if new_role not in {"worker", "director", "admin"}:
+82         raise HTTPException(400, "Invalid role")
+83     crud_user.update_user(db, user_id, UserUpdate(role=new_role))
+84     return {"status": "updated", "user_id": user_id, "new_role": new_role}
+
+В.4 Резервне копіювання користувацьких даних.
+
+GitHub репозиторій: https://github.com/NureBilozubDanylo/apz-pzpi-22-3-bilozub-danylo/blob/main/Lab3/pzpi-22-3-bilozub-danylo-lab3/ZooShopHelper/app/backup.py
+
+1 from fastapi import APIRouter, Depends, HTTPException
+2 from datetime import datetime, timedelta
+3 from pathlib import Path
+4 import psutil, os, shutil, time
+5 
+6 from app.dependencies import get_current_admin_user
+7 from app.models.user import User
+8 from app.backup import backup_database    # функція вже існує
+9 
+10 router = APIRouter(prefix="/admin", tags=["Admin"])
+11 
+12 # для аптайму
+13 START_TIME = time.time()
+14 
+15 @router.post("/backup")
+16 def manual_backup(current: User = Depends(get_current_admin_user)):
+17     """Ручне резервне копіювання."""
+18     try:
+19         backup_database()        # існуюча функція
+20         return {"status": "ok", "timestamp": datetime.utcnow()}
+21     except Exception as e:
+22         raise HTTPException(status_code=500, detail=str(e))
+23 
+24 
+25 @router.get("/stats")
+26 def server_stats(current: User = Depends(get_current_admin_user)):
+27     """Повертає аптайм, CPU %, RAM та диск."""
+28     uptime = time.time() - START_TIME
+29     mem = psutil.virtual_memory()
+30     disk = psutil.disk_usage("/")
+31     return {
+32         "uptime_sec": int(uptime),
+33         "cpu_percent": psutil.cpu_percent(interval=0.2),
+34         "ram_used_mb": int(mem.used / 1024 / 1024),
+35         "ram_total_mb": int(mem.total / 1024 / 1024),
+36         "disk_used_gb": round(disk.used / 1024**3, 1),
+37         "disk_total_gb": round(disk.total / 1024**3, 1),
+38     }
+
+В.5 Адміністрування бізнес-логіки системи. Системний адміністратор. Фронтенд частина
+
+GitHub репозиторій: https://github.com/NureBilozubDanylo/apz-pzpi-22-3-bilozub-danylo/blob/main/Lab3/pzpi-22-3-bilozub-danylo-lab3/FrontEnd/projectshop/src/components/AdminPanel.vue
+
+1 <template>
+2   <div class="admin-page">
+3     <div class="container">
+4       <h2>Admin panel</h2>
+5 
+6       <!-- резервна копія -->
+7       <section class="backup-block">
+8         <h3>Backup</h3>
+9         <button class="btn backup" :disabled="backupLoading" @click="createBackup">
+10           {{ backupLoading ? 'Creating…' : 'Create backup' }}
+11         </button>
+12         <span v-if="lastBackup" class="time">
+13           Last backup: {{ format(lastBackup) }}
+14         </span>
+15       </section>
+16 
+17       <!-- статистика -->
+18       <section class="stats-block" v-if="stats">
+19         <h3>Server stats</h3>
+20         <p>Uptime: {{ prettyUptime(stats.uptime_sec) }}</p>
+21         <p>CPU: {{ stats.cpu_percent }} %</p>
+22         <p>RAM: {{ stats.ram_used_mb }} / {{ stats.ram_total_mb }} MB</p>
+23         <p>Disk: {{ stats.disk_used_gb }} / {{ stats.disk_total_gb }} GB</p>
+24       </section>
+25 
+26       <hr />
+27 
+28       <!-- Список магазинів та працівників -->
+29       <div v-if="loading" class="loader">Loading…</div>
+30       <div v-for="shop in shops" :key="shop.shop_id" class="shop-block">
+31         <h3>{{ shop.name }} (id: {{ shop.shop_id }})</h3>
+32 
+33         <div v-if="workers[shop.shop_id]?.length">
+34           <table class="worker-table">
+35             <thead>
+36               <tr>
+37                 <th>Name</th><th>Role</th><th>Email</th>
+38                 <th>Phone</th><th>Age</th><th>Actions</th>
+39               </tr>
+40             </thead>
+41             <tbody>
+42               <tr v-for="w in workers[shop.shop_id]" :key="w.user_id">
+43                 <!-- edit mode -->
+44                 <template v-if="editingId === w.user_id">
+45                   <td><input v-model="form.name" /></td>
+46                   <td>
+47                     <select v-model="form.role">
+48                       <option value="worker">worker</option>
+49                       <option value="director">director</option>
+50                     </select>
+51                   </td>
+52                   <td><input v-model="form.email" /></td>
+53                   <td><input v-model="form.mobile_number" /></td>
+54                   <td><input type="number" v-model.number="form.age" /></td>
+55                   <td>
+56                     <button class="btn save" @click="saveUser(w.user_id)">Save</button>
+57                     <button class="btn cancel" @click="editingId = null">Cancel</button>
+58                   </td>
+59                 </template>
+60                 <!-- view mode -->
+61                 <template v-else>
+62                   <td>{{ w.username }}</td><td>{{ w.role }}</td>
+63                   <td>{{ w.email }}</td><td>{{ w.mobile_number }}</td>
+64                   <td>{{ w.age }}</td>
+65                   <td><button class="btn edit" @click="startEdit(w)">Edit</button></td>
+66                 </template>
+67               </tr>
+68             </tbody>
+69           </table>
+70         </div>
+71         <p v-else>No workers in this shop</p>
+72       </div>
+73     </div>
+74   </div>
+75 </template>
+76 
+77 <script setup>
+78 import { ref, reactive, onMounted, onBeforeUnmount } from "vue";
+79 import axios from "axios";
+80 
+81 axios.defaults.baseURL = "http://127.0.0.1:8000";
+82 axios.defaults.withCredentials = true;
+83 axios.interceptors.request.use((cfg) => {
+84   const t = localStorage.getItem("token");
+85   if (t) cfg.headers.Authorization = `Bearer ${t}`;
+86   return cfg;
+87 });
+88 
+89 /* ---------------- state ---------------- */
+90 const loading = ref(true);
+91 const shops   = ref([]);
+92 const workers = reactive({});
+93 const stats   = ref(null);
+94 
+95 const editingId = ref(null);
+96 const form = reactive({ name:"", role:"", email:"", mobile_number:"", age:0 });
+97 
+98 const backupLoading = ref(false);
+99 const lastBackup    = ref(null);
+100 
+101 let statsPoller;
+102 
+103 /* -------------- fetch helpers -------------- */
+104 async function fetchShops() {
+105   const username = localStorage.getItem("username");
+106   const { data } = await axios.get(`/shops/user/${username}/shops`);
+107   shops.value = data;
+108 }
+109 async function fetchWorkers(shopId) {
+110   const { data } = await axios.get(`/shops/${shopId}/workers`);
+111   workers[shopId] = data;
+112 }
+113 async function fetchStats() {
+114   try {
+115     const { data } = await axios.get("/admin/stats");
+116     stats.value = data;
+117   } catch(e){ console.error(e); }
+118 }
+119 
+120 /* -------------- backup -------------- */
+121 async function createBackup() {
+122   backupLoading.value = true;
+123   try {
+124     const { data } = await axios.post("/admin/backup");
+125     lastBackup.value = data.timestamp;
+126     alert("Backup created successfully!");
+127   } catch (e) {
+128     console.error(e);
+129     alert("Backup failed!");
+130   } finally {
+131     backupLoading.value = false;
+132   }
+133 }
+134 
+135 /* -------------- edit flow -------------- */
+136 function startEdit(w) {
+137   editingId.value = w.user_id;
+138   Object.assign(form, {
+139     name: w.username, role: w.role, email: w.email,
+140     mobile_number: w.mobile_number, age: w.age
+141   });
+142 }
+143 async function saveUser(userId) {
+144   try {
+145     await axios.put(`/users/${userId}`, {
+146       username: form.name, role: form.role, email: form.email,
+147       mobile_number: form.mobile_number, age: form.age,
+148     });
+149     const shopId = Object.keys(workers)
+150       .find(id => workers[id].some(u => u.user_id === userId));
+151     if (shopId) await fetchWorkers(shopId);
+152     editingId.value = null;
+153   } catch(e){ console.error(e); alert("Save failed"); }
+154 }
+155 
+156 /* -------------- life-cycle -------------- */
+157 onMounted(async () => {
+158   await fetchShops();
+159   await Promise.all(shops.value.map(s => fetchWorkers(s.shop_id)));
+160   loading.value = false;
+161   await fetchStats();
+162   statsPoller = setInterval(fetchStats, 5000);
+163 });
+164 onBeforeUnmount(() => clearInterval(statsPoller));
+165 
+166 /* -------------- utils -------------- */
+167 function format(ts){
+168   return new Date(ts).toLocaleString();
+169 }
+170 function prettyUptime(sec){
+171   const h = Math.floor(sec/3600), m = Math.floor(sec%3600/60);
+172   return `${h}h ${m}m`;
+173 }
+174 </script>
+175 
+176 <style scoped>
+177 .container { max-width:1100px; margin:0 auto; padding:20px; }
+178 h3 { margin-top:0; }
+179 
+180 .backup-block, .stats-block { margin-bottom:24px; }
+181 .time { margin-left:12px; font-style:italic; }
+182 
+183 .shop-block { margin-bottom:40px; }
+184 .worker-table { width:100%; border-collapse:collapse; }
+185 .worker-table th, .worker-table td { border:1px solid #ccc; padding:6px 8px; }
+186 
+187 .btn { padding:4px 10px; border:none; border-radius:6px; cursor:pointer; font-size:.85rem; }
+188 .edit{ background:#1976d2; color:#fff; } .save{ background:#2e7d32; color:#fff; }
+189 .cancel{ background:#c62828; color:#fff; margin-left:6px; }
+190 .backup{ background:#795548; color:#fff; }
+191 
+192 .loader{ margin:40px 0; }
+193 </style>

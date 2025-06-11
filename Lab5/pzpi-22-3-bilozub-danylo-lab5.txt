@@ -1,0 +1,516 @@
+
+Харківський національний університет радіоелектроніки
+Факультет комп'ютерних наук
+Кафедра програмної інженерії
+
+
+
+
+ЗВІТ
+з лабораторної роботи №5
+з дисципліни «Архітектура програмного забезпечення»
+на тему: «РОЗГОРТАННЯ СИСТЕМИ»
+
+
+
+
+Виконав 
+ст. гр. ПЗПІ-22-3 
+Білозуб Данило Владиславович
+
+Перевірив 
+ст. викладач кафедри ПІ 
+Сокорчук Ігор Петрович
+
+
+
+
+
+ 
+Харків 2025
+1 ІСТОРІЯ ЗМІН
+
+№ 	Дата	Версія звіту 	Опис змін та виправлень 
+1 	25.05.2025	0.1 	Створено розділ «Історія змін» 
+2 	25.05.2025	0.1 	Створено розділ «Завдання», Опис виконаної роботи» та «Висновки» 
+3 	27.05.2025	0.1 	Заповнено додаток Б з графічними матеріалами 
+4 	28.05.2025	0.1 	Заповнено додаток В з програмним кодом 
+5 	30.05.2025	0.1 	Наведено посилання на відеозапис. Заповнено додаток А. 
+
+2 ЗАВДАННЯ
+
+Метою даного лабораторного заняття є розгортання та демонстрація розробленої програмної системи.
+
+3 ОПИС ВИКОНАНОЇ РОБОТИ
+
+До виконаної роботи було створено відеозвіт, посилання на який наведено у додатку А. Усі графічні матеріали наведені у додатку Б. Код застосунку наведено у додатку В.
+Було реалізовано розгортання системи контролю роботи зоомагазину з використанням контейнеризації за допомогою Docker. До складу системи входять фронтенд, серверна частина та база даних, які розміщено в окремих контейнерах.
+Базу даних автоматично завантажено з резервної копії при розгортанні, що забезпечує відновлення всіх необхідних даних для коректної роботи системи. Під час цього процесу також відбувається встановлення необхідних залежностей.
+Було створено відповідні файли запуску для фронтенду, серверної частини та бази даних, що дозволяє швидко розгорнути систему на будь-якому сумісному середовищі.
+
+ВИСНОВКИ
+
+У результаті виконання даної лабораторної роботи було створено та розгорнуто програмну систему для контролю роботи зоомагазину. Система успішно запущена та продемонстрована її повна працездатність після розгортання.
+
+
+
+
+ДОДАТОК А
+Відеозапис
+
+Відеозапис презентації результатів лабораторної роботи: https://youtu.be/a9ILmby6Tw8
+
+Хронологічний опис відеозапису:
+00:00 Вітання 
+00:18 Розгортання системи (Docker) 
+06:50 Демонструється працездатність програми (Вебсайт) 
+12:08 Функції адміністратора баз даних 
+12:55 Функції адміністратора платформи 
+13:55 Функції адміністратора системи
+
+
+
+
+ДОДАТОК Б 
+Графічні матеріали
+
+ 
+Рисунок Б.1 – ER-діаграма даних
+
+ 
+Рисунок Б.2 – Структура бази даних
+
+ 
+Рисунок Б.3 – UML-діаграма прецедентів
+
+ 
+Рисунок Б.4 – UML-діаграма прецедентів (Частина 2)
+
+ 
+Рисунок Б.5 – UML-діаграма прецедентів (Частина 3)
+
+ 
+Рисунок Б.6 – UML-діаграма прецедентів (Частина 4)
+
+ 
+Рисунок Б.7 – Uml діаграма взаємодії (послідовності) для створення нового користувача та його вхід в систему
+
+ДОДАТОК В 
+Програмний код
+
+В.1 Математична обробка прикладних даних.
+
+GitHub репозиторій: https://github.com/NureBilozubDanylo/apz-pzpi-22-3-bilozub-danylo/blob/main/Lab3/pzpi-22-3-bilozub-danylo-lab3/ZooShopHelper/app/crud/animal.py
+
+1 def update_climate_settings(db: Session, shop_id: int):
+2     animals = db.query(Animal).filter(Animal.shop_id == shop_id).all()
+3     if animals:
+4         temperatures = [float(a.temperature) for a in animals]
+5         humidities = [float(a.humidity) for a in animals]
+6         light_intensities = [float(a.light_intensity) for a in animals]
+7         weights = [a.weight for a in animals]
+8 
+9         # Temperature: Weighted median
+10         # Calculate the weighted average temperature
+11         total_weight = sum(a.weight for a in animals)
+12         if total_weight == 0:
+13             weighted_median_temperature = 0  # Handle the case with no weight
+14         else:
+15             weighted_median_temperature = sum(a.temperature * a.weight for a in animals) / total_weight
+16 
+17 
+18 
+19         # Optimal humidity
+20         humidities = [float(a.humidity) for a in animals]
+21         high_humidity_animals = [a for a in animals if a.humidity > 75]
+22 
+23         if high_humidity_animals:
+24             high_humidity_values = [float(a.humidity) for a in high_humidity_animals]
+25             optimal_humidity = np.percentile(high_humidity_values, 75)
+26         else:
+27             lower_percentile = np.percentile(humidities, 25)
+28             upper_percentile = np.percentile(humidities, 75)
+29             optimal_humidity = (lower_percentile + upper_percentile) / 2
+30 
+31         # Optimal light intensity
+32         light_intensities = [float(a.light_intensity) for a in animals]
+33         max_light_intensity = max(light_intensities)
+34         median_light_intensity = np.median(light_intensities)
+35         optimal_light_intensity = min(max_light_intensity, median_light_intensity)
+36 
+37 
+38         db_climate_settings = db.query(ClimateSettings).filter(ClimateSettings.shop_id == shop_id).first()
+39         if db_climate_settings:
+40             db_climate_settings.temperature = weighted_median_temperature
+41             db_climate_settings.humidity = optimal_humidity
+42             db_climate_settings.light_intensity = optimal_light_intensity
+43             db_climate_settings.updated_at = datetime.now()
+44         else:
+45             new_climate_settings = ClimateSettingsCreate(
+46                 temperature=weighted_median_temperature,
+47                 humidity=optimal_humidity,
+48                 light_intensity=optimal_light_intensity,
+49                 updated_at=datetime.now(),
+50                 shop_id=shop_id
+51             )
+52             db_climate_settings = ClimateSettings(**new_climate_settings.dict())
+53             db.add(db_climate_settings)
+54         
+55         db.commit()
+56         db.refresh(db_climate_settings)
+
+В.2 Адміністрування бізнес-логіки системи. Платформний адміністратор.
+
+GitHub репозиторій: https://github.com/NureBilozubDanylo/apz-pzpi-22-3-bilozub-danylo/blob/main/Lab3/pzpi-22-3-bilozub-danylo-lab3/ZooShopHelper/app/routers/admin_management.py
+
+
+1 """
+2 Адміністративні інструменти:
+3   • System Admin   – конфіги, стани, логи
+4   • Platform Admin – керування користувачами / компаніями
+5   • DB Admin       – резервні копії, оптимізація БД
+6 """
+7 
+8 import os, time, json, shutil, subprocess
+9 from datetime import datetime
+10 from pathlib import Path
+11 from typing import Dict, List, Optional
+12 
+13 import psutil
+14 import psycopg2
+15 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
+16 from sqlalchemy import text
+17 from sqlalchemy.orm import Session
+18 
+19 from app.database import SessionLocal, engine
+20 from app.dependencies import get_current_admin_user
+21 from app.crud import user as crud_user
+22 from app.schemas.user import UserUpdate
+23 from app.backup import backup_database
+24 from app.dependencies import get_current_admin_user
+25 from app.models.user import User
+26 
+27 router = APIRouter(prefix="/admin", tags=["Admin"])
+28 
+29 SYSTEM_CONFIG: Dict[str, str | int | bool] = {
+30     "maintenance_mode": False,
+31     "default_locale": "en",
+32     "max_file_size_mb": 50,
+33 }
+34 START_TIME = time.time()
+35 
+36 LOG_PATH = Path("server.log")
+37 START_TS = time.time()
+38 
+39 def get_db():
+40     db = SessionLocal()
+41     try:
+42         yield db
+43     finally:
+44         db.close()
+45 
+46 def as_admin(user=Depends(get_current_admin_user)):
+47     return user
+48 
+49 @router.post("/backup")
+50 def manual_backup(current: User = Depends(get_current_admin_user)):
+51     """Ручне резервне копіювання."""
+52     try:
+53         backup_database()        # існуюча функція
+54         return {"status": "ok", "timestamp": datetime.utcnow()}
+55     except Exception as e:
+56         raise HTTPException(status_code=500, detail=str(e))
+57 
+58 
+59 @router.get("/stats")
+60 def server_stats(current: User = Depends(get_current_admin_user)):
+61     """Повертає аптайм, CPU %, RAM та диск."""
+62     uptime = time.time() - START_TIME
+63     mem = psutil.virtual_memory()
+64     disk = psutil.disk_usage("/")
+65     return {
+66         "uptime_sec": int(uptime),
+67         "cpu_percent": psutil.cpu_percent(interval=0.2),
+68         "ram_used_mb": int(mem.used / 1024 / 1024),
+69         "ram_total_mb": int(mem.total / 1024 / 1024),
+70         "disk_used_gb": round(disk.used / 1024**3, 1),
+71         "disk_total_gb": round(disk.total / 1024**3, 1),
+72     }
+73 
+74 
+75 @router.get("/system/status")
+76 def system_status(_: str = Depends(as_admin)):
+77     """CPU, RAM, диск та аптайм."""
+78     uptime = int(time.time() - START_TS)
+79     mem = psutil.virtual_memory()
+80     disk = psutil.disk_usage("/")
+81     return {
+82         "uptime_sec": uptime,
+83         "cpu_percent": psutil.cpu_percent(interval=0.2),
+84         "ram_used_mb": int(mem.used / 1024 / 1024),
+85         "ram_total_mb": int(mem.total / 1024 / 1024),
+86         "disk_used_gb": round(disk.used / 1024**3, 1),
+87         "disk_total_gb": round(disk.total / 1024**3, 1),
+88         "config": SYSTEM_CONFIG,
+89     }
+90 
+91 @router.get("/system/config")
+92 def get_config(_: str = Depends(as_admin)):
+93     return SYSTEM_CONFIG
+94 
+95 @router.put("/system/config")
+96 def update_config(changes: Dict[str, str | int | bool], _: str = Depends(as_admin)):
+97     SYSTEM_CONFIG.update(changes)
+98     return {"status": "updated", "config": SYSTEM_CONFIG}
+99 
+100 @router.get("/system/logs")
+101 def get_logs(lines: int = 200, _: str = Depends(as_admin)):
+102     """Повернути останні N рядків лог-файлу."""
+103     if not LOG_PATH.exists():
+104         raise HTTPException(404, "log file not found")
+105     with LOG_PATH.open("r", encoding="utf-8", errors="ignore") as f:
+106         data = f.readlines()[-lines:]
+107     return {"log": "".join(data)}
+108 
+109 @router.delete("/system/logs")
+110 def clear_logs(_: str = Depends(as_admin)):
+111     if LOG_PATH.exists():
+112         LOG_PATH.write_text("")
+113     return {"status": "cleared"}
+114 
+115 
+116 
+117 BACKUP_DIR = Path("db_backups")
+118 BACKUP_DIR.mkdir(exist_ok=True)
+119 
+120 @router.post("/db/backup")
+121 def create_backup(_: str = Depends(as_admin)):
+122     ts = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+123     backup_database()
+124     return {"status": "backup_created", "timestamp": ts}
+125 
+126 @router.post("/db/restore")
+127 def restore_backup(file: UploadFile = File(...),
+128                    _: str = Depends(as_admin)):
+129     """Приймає *.sql.gz або *.dump та відновлює БД."""
+130     dst = BACKUP_DIR / file.filename
+131     with dst.open("wb") as f:
+132         shutil.copyfileobj(file.file, f)
+133 
+134     cmd = f'psql "{os.getenv("DATABASE_URL")}" -f "{dst}"'
+135     subprocess.run(cmd, shell=True, check=True)
+136     return {"status": "restored", "file": file.filename}
+137 
+138 @router.get("/admin/db/status")
+139 def db_status(_: str = Depends(as_admin)):
+140     with engine.connect() as conn:
+141         results = conn.execute(text("""
+142             SELECT
+143                 table_name,
+144                 pg_total_relation_size(quote_ident(table_name)) AS size
+145             FROM information_schema.tables
+146             WHERE table_schema = 'public'
+147         """)).fetchall()
+148 
+149     total = sum(row.size for row in results)
+150     return {
+151         "tables": [{ "name": row.table_name, "size_bytes": row.size } for row in results],
+152         "total_size_mb": round(total / 1024 / 1024, 2),
+153     }
+154 
+155 @router.post("/admin/db/optimize")
+156 def optimize_db(_: str = Depends(as_admin)):
+157     conn = engine.raw_connection()
+158     try:
+159         conn.set_session(autocommit=True)
+160         cur = conn.cursor()
+161         cur.execute("VACUUM")
+162         cur.close()
+163     finally:
+164         conn.close()
+165     return {"status": "vacuum_ok"}
+
+В.3 Адміністрування бізнес-логіки системи. Системний адміністратор.
+
+GitHub репозиторій: https://github.com/NureBilozubDanylo/apz-pzpi-22-3-bilozub-danylo/blob/main/Lab3/pzpi-22-3-bilozub-danylo-lab3/ZooShopHelper/app/routers/admin_tools.py
+
+
+1 from fastapi import APIRouter, Depends, HTTPException
+2 from datetime import datetime, timedelta
+3 from pathlib import Path
+4 import psutil, os, shutil, time
+5 import os, time, json, shutil, subprocess
+6 from datetime import datetime
+7 from pathlib import Path
+8 from typing import Dict, List, Optional
+9 
+10 import psutil
+11 import psycopg2
+12 from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
+13 from sqlalchemy import text
+14 from sqlalchemy.orm import Session
+15 
+16 from app.database import SessionLocal, engine
+17 from app.dependencies import get_current_admin_user
+18 from app.crud import user as crud_user
+19 from app.schemas.user import UserUpdate
+20 from app.backup import backup_database
+21 from app.dependencies import get_current_admin_user
+22 from app.models.user import User
+23 from app.dependencies import get_current_admin_user
+24 from app.models.user import User
+25 from app.backup import backup_database    # функція вже існує
+26 
+27 router = APIRouter(prefix="/admin", tags=["Admin"])
+28 
+29 # для аптайму
+30 START_TIME = time.time()
+31 
+32 def get_db():
+33     db = SessionLocal()
+34     try:
+35         yield db
+36     finally:
+37         db.close()
+38 
+39 def as_admin(user=Depends(get_current_admin_user)):
+40     return user
+41 
+42 @router.put("/platform/users/{user_id}/role")
+43 def set_user_role(user_id: int, new_role: str = Form(...),
+44                   db: Session = Depends(get_db),
+45                   _: str = Depends(as_admin)):
+46     if new_role not in {"worker", "director", "admin"}:
+47         raise HTTPException(400, "invalid role")
+48     crud_user.update_user(db, user_id, UserUpdate(role=new_role))
+49     return {"status": "ok", "user_id": user_id, "role": new_role}
+50 
+51 @router.post("/platform/users/{user_id}/logout")
+52 def force_logout(user_id: int, db: Session = Depends(get_db), _: str = Depends(as_admin)):
+53     user = crud_user.get_user(db, user_id)
+54     if not user:
+55         raise HTTPException(404, "User not found")
+56     user.token = None  # або як у тебе реалізовані сесії
+57     db.commit()
+58     return {"status": "force_logged_out", "user_id": user_id}
+59 
+60 @router.delete("/platform/users/{user_id}")
+61 def delete_user(user_id: int, db: Session = Depends(get_db), _: str = Depends(as_admin)):
+62     user = crud_user.get_user(db, user_id)
+63     if not user:
+64         raise HTTPException(404, "User not found")
+65 
+66     db.execute(text("DELETE FROM \"Employees\" WHERE user_id = :uid"), {"uid": user_id})
+67     db.commit()
+68 
+69     db.delete(user)
+70     db.commit()
+71 
+72     return {"status": "deleted", "user_id": user_id}
+73 
+74 @router.patch("/platform/users/{user_id}/role")
+75 def change_user_role(
+76     user_id: int,
+77     new_role: str = Form(...),
+78     db: Session = Depends(get_db),
+79     _: str = Depends(as_admin)
+80 ):
+81     if new_role not in {"worker", "director", "admin"}:
+82         raise HTTPException(400, "Invalid role")
+83     crud_user.update_user(db, user_id, UserUpdate(role=new_role))
+84     return {"status": "updated", "user_id": user_id, "new_role": new_role}
+
+В.4 Резервне копіювання користувацьких даних.
+
+GitHub репозиторій: https://github.com/NureBilozubDanylo/apz-pzpi-22-3-bilozub-danylo/blob/main/Lab3/pzpi-22-3-bilozub-danylo-lab3/ZooShopHelper/app/backup.py
+
+1 from fastapi import APIRouter, Depends, HTTPException
+2 from datetime import datetime, timedelta
+3 from pathlib import Path
+4 import psutil, os, shutil, time
+5 
+6 from app.dependencies import get_current_admin_user
+7 from app.models.user import User
+8 from app.backup import backup_database    # функція вже існує
+9 
+10 router = APIRouter(prefix="/admin", tags=["Admin"])
+11 
+12 # для аптайму
+13 START_TIME = time.time()
+14 
+15 @router.post("/backup")
+16 def manual_backup(current: User = Depends(get_current_admin_user)):
+17     """Ручне резервне копіювання."""
+18     try:
+19         backup_database()        # існуюча функція
+20         return {"status": "ok", "timestamp": datetime.utcnow()}
+21     except Exception as e:
+22         raise HTTPException(status_code=500, detail=str(e))
+23 
+24 
+25 @router.get("/stats")
+26 def server_stats(current: User = Depends(get_current_admin_user)):
+27     """Повертає аптайм, CPU %, RAM та диск."""
+28     uptime = time.time() - START_TIME
+29     mem = psutil.virtual_memory()
+30     disk = psutil.disk_usage("/")
+31     return {
+32         "uptime_sec": int(uptime),
+33         "cpu_percent": psutil.cpu_percent(interval=0.2),
+34         "ram_used_mb": int(mem.used / 1024 / 1024),
+35         "ram_total_mb": int(mem.total / 1024 / 1024),
+36         "disk_used_gb": round(disk.used / 1024**3, 1),
+37         "disk_total_gb": round(disk.total / 1024**3, 1),
+38     }
+
+В.5 docker-compose файл для розгортання системи
+
+GitHub репозиторій: https://github.com/NureBilozubDanylo/apz-pzpi-22-3-bilozub-danylo/blob/main/Lab5/pzpi-22-3-bilozub-danylo-lab5/Project/docker-compose.yml
+
+1 services:
+2   db:
+3     image: postgres:15
+4     environment:
+5       POSTGRES_DB: ZooShopHelper
+6       POSTGRES_USER: postgres
+7       POSTGRES_PASSWORD: postgres
+8     volumes:
+9       - db_data:/var/lib/postgresql/data
+10       - ./db:/docker-entrypoint-initdb.d:ro
+11     ports:
+12       - "5432:5432"
+13     networks: [backend]
+14 
+15   backend:
+16     build:
+17       context: ./ZooShopHelper
+18       dockerfile: Dockerfile
+19     environment:
+20       DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/ZooShopHelper
+21     depends_on: [db]
+22     volumes:
+23       - ./ZooShopHelper/app:/api/app
+24     ports:
+25       - "8000:8000"
+26     networks: [backend]
+27 
+28   frontend:
+29     build:
+30       context: ./FrontEnd/projectshop
+31       dockerfile: Dockerfile
+32     environment:
+33       VUE_APP_API_URL: http://localhost:8000
+34     depends_on: [backend]
+35     volumes:
+36       - ./FrontEnd/projectshop:/app
+37       - /app/node_modules
+38     ports:
+39       - "8080:8080"
+40     networks: [backend]
+41 
+42 volumes:
+43   db_data:
+44 
+45 networks:
+46   backend:
+47     driver: bridge
